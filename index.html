@@ -1,74 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>blog</title>
+  </head>
+  <body>
+<a href="#">First blog post</a>
+<a href="#">second blog post</a>
+<a href="#">third blog post</a>
+  </body>
+</html>
 
-<!doctype html>
-
-  
-<title>Welcome | Flask (A Python Microframework)</title>
-<meta charset=utf-8>
-<link rel=stylesheet type=text/css href="/static/style.css">
-<link rel="shortcut icon" href="/static/favicon.ico">
-<script type=text/javascript
-  src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-
-  <style type=text/css>
-    h1 { margin: 0 0 30px 0; background: url(/static/logo.png) no-repeat center; height: 165px; }
-    h1 span, p.tagline { display: none; }
-  </style>
-  <script type=text/javascript>
-    $(function() {
-      $('h1').bind('mousedown contextmenu', function(event) {
-        if (event.button != 2)
-          return;
-        var box = $('div.logohint');
-        if (!box.is(':visible'))
-          box.animate({'height': 'show', 'opacity': 'show'}, 100);
-        event.preventDefault();
-        event.returnValue = false;
-        return false;
-      });
-    });
-  </script>
-
-<div class=box>
-  
-  
-    <h1><span>Welcome</span></h1>
-
-  <p class=nav>
-    <a href="/">لمحه </a> -
-    <a href="/docs/">تعريف</a> -
-    <a href="/community/">برمجه</a> -
-    <a href="/snippets/">علوم</a> -
-    <a href="/extensions/">تواصل</a>
-  
-  
-  <blockquote>
-    Flask is a microframework for Python based on Werkzeug, Jinja 2 and good intentions.
-    And before you ask: It's <a href="/docs/license/">BSD licensed</a>!
-  </blockquote>
-  <p class=latestver>
-    <strong>Latest Version:</strong>
-    <a href="http://pypi.python.org/pypi/Flask/0.11" title="Download tarball">0.11</a>
-  <h2>مثال لاستيراد الشفره المصدرية</h2>
-  <pre><span class=ig>from flask import Flask
-app = Flask(__name__)</span>
-
-@app.route("/")
-def hello():
-    return "Hello World!"
-
-<span class=ig>if __name__ == "__main__":
-    app.run()</span></pre>
-  
-  <iframe src="http://ghbtns.com/github-btn.html?user=mmusa71&amp;repo=flask&amp;type=watch&amp;count=true&amp;size=large" width="190" height="35" style="float: right;border: none"></iframe>
-  <h2>Interested?</h2>
-  <ul>
-    <li><a href="http://pypi.python.org/pypi/Flask/0.11">link to page 1</a> (0.11)
-    <li>
-      <a href="/docs/">link to page 2</a> or download as
-      <a href="/docs/0.11/.latex/Flask.pdf">PDF</a>
-    <li><a href="/mailinglist/">link to page 3</a>
-  </ul>
-
-  <p class=footer>
-    &copy; Copyright 2016 - 2016 by <a href=http://lucumr.pocoo.org/>Mohamed Musa</a>
-</div>
