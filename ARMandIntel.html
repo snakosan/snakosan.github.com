@@ -30,34 +30,73 @@
 
 <main>
 <article>
-<p>The main purpose of the CPU is to do arithmetic or logical calculations. Have a bunch of them and you have a program.
+<p>The main purpose of the CPU is to do logical and arithmetic calculations. Have a bunch of them and you have a program. 
   These calculations are done by sending one instruction at a time. 
-  An instruction can be move this number to this place, or add this number to number in that place, or it could be put the outcome in that place. </p>
-  <p>The list of all the instructions that the processor supports is referred to as the Instructions Set. 
-Back to out one instruction at a time interface with the processor. The sentence is a bit vague. How detailed this instruction is? is is SIMPLE as in just add a to b, or can it be COMPLEX as in multiply a by b.</p>
-  The multiplication is a single instruction that can be done as a bunch of additions, or can be done by a complex hardware that takes care of all the steps together. This distinction about having a clean, and minimal set of instructions (i.e. interface) or a complex and wealthy set is not as superficial as it seems. 
-The simple approach is Called RISC for reduced instruction set architecture, and the complex one is called Complex instruction set architecture. </p>
+  Move this number here, add this number to the number in that place, and put the outcome there, are examples. 
+ </p>
+  
+  
+  <p>
+   The instruction set is the set of all supported instructions by the CPU. 
+    But, how detailed this instruction should be? SIMPLE as in just add a to b, or COMPLEX as in multiply a by b. 
+  </p>
+  
+  <p>
+  The multiplication can be done as a single or many instructions. 
+    Single instruction needs a complex hardware that performs all the steps. 
+    This distinction between a clean, and minimal instruction set (i.e. interface) and a complex, wealthy set is not as superficial as it seems. 
+  </p>
+<p>
+  The simple approach is Called RISC for reduced instruction set computer, while  the Complex instruction set computer is CISC. 
+  </p>
+  
+<p>
+  
+  The distinction is about who does the heavy lifting, the programmer or the hardware. 
+  With RISC simplicity, the complexity of the program is compensated for by the programmer. 
+  For CISC, it is harder for the hardware developer but easy for the programmer. Here are more distinctions: 
 
-<p>The distinction can be looked at as who does the heavy lifting, the programmer or the hardware. With RISC simplicity, the complexity of the program has to be compensated for by the programmer, while the complex CISC makes it hard for the hardware developer but easy for the programmer. Here are some distinctions: 
   <ul>
-<li>simple RISC only provides single clock instructions only. Complex CISC have multiple clock complex instructions. </li>
-<li> simple RISC can only move data between registers, while complex CISC is more able. It can move data between memory locations. </li>
-<li>simple RISC therefore leads to large code size, while complex CISC has smaller program sizes. </li>
-<li> simple RISC can use the extra transistors for memory registers. Complex CISC already used many extra transistors for implementing complex instructions. </li>
+<li>Simple RISC provides single clock instructions only. Complex CISC have multiple-clock complex instructions. </li>
+<li> Simple RISC can only move data between registers. Complex CISC is more able. It can move data even between memory locations. </li>
+<li>Simple RISC leads to larger code size.</li>
+<li> Simple RISC can use more extra transistors for memory registers. Complex CISC needs more for complex instructions. </li>
   </ul>
 </p>
+  
+  
 <p>Think about the simplicity of the Swiss knife vs the complexity of a large tool box. </p>
 
-<p>But which approach is better? The simple or the complex. Bro, this is a deep life question. But let's focus on microprocessors. </p>
-At the moment, two big players are on the field. The first one is the American Intel, with its complex CISC. The other is the British ARM, with its simple RISC. Intel wanted to be the Ferrari, getting the best performance out of the CPU. ARM wanted to save on fuel, they selected RISC which provides high energy efficiency. </p>
+<p>But which approach is better? The simple or the complex. This is a deep life question. But let's focus on microprocessors. 
+ </p>
+  
+  <p>At the moment, two big players are on the field. The first is the American Intel, with its complex CISC. 
+    The other is the British ARM, with its simple RISC. Intel wanted to be the Ferrari, getting the best performance out of the CPU.
+    ARM wanted to save on fuel, they RISC'ed it for high energy efficiency. 
 
-<p>Indeed, ARM's lower energy consumption is what made it occupy the smartphone market. Smartphones operate on batteries. Their TDP (Thermal design power) requirement is only 3.5W. Intel's core I7 on the other hand has a 100W TDP. It makes it good when high performance is needed such as in Servers and high performance desktops. </p>
+  </p>
+  
+<p>Indeed, ARM's lower energy consumption is what made it occupy the smartphone market. 
+  Smartphones operate on batteries. Their TDP (Thermal design power) requirement is only 3.5W. 
+  Intel's core I7 has a 100W TDP. This is good when high performance is needed such as in Servers and high performance desktops. 
+</p>
 
-<p>Is it one design for each application requirement? Or can ARM scale its performance when needed? Can Intel scale down its performance to consume very low power? </p>
+<p>can ARM scale up its performance when needed? Can Intel scale down its performance to consume very low power? 
+</p>
 
-<p>However, this question is not separate from other important factors. Intel business model is different from ARMs. While ARM only focuses on the design of CPU cores and licensing them to their clients (such as Qualcomm and Apple), and let them care about fabrication later, Intel does everything in-house. Intel wins with the vertical integration and ecosystem but ARM win by having their clients having access to the innovative fabrication facilities such as TSMC in Taiwan. TSMC at the moment have a 5nm process node while Intel is stuck at 14nm from 2014. </p>
+<p>However, this question is not separate from other important factors. 
+  Intel business model is different from ARMs. 
+  While ARM only focuses on the design of CPU cores and licensing them to their clients (such as Qualcomm and Apple).
+  Intel does everything in-house.
+  Intel wins with the vertical integration and ecosystem but ARM win by having their clients having access to the innovative fabrication facilities such as TSMC in Taiwan. TSMC at the moment have a 5nm process node while Intel is stuck at 14nm from 2014. 
+</p>
 
-<p>At the moment of writing, things are still unclear. ARM is venturing into the laptop and desktop market. Apple's M1 which is a custom IP license is used in the latest Apple Mac book pro and air. Its performance is ahead of its predecessors using Intel's. Nvidia has bought ARM from SoftBank, and Nvidia is aiming big at the data centres business. Intel isn't going to sit there and watch, they definitely have something up their sleeve. 
+<p>At the moment of writing, things are still unclear. ARM is venturing into the laptop and desktop market. 
+  Apple's M1 which is a custom IP license is used in the latest Apple Mac book pro and air. 
+  Its performance is ahead of its predecessors using Intel's. Nvidia has bought ARM from SoftBank, and Nvidia is aiming big at the data centres business. 
+  Intel isn't going to sit there and watch, they definitely have something up their sleeve. 
+  </p>
+  <p>
   The landscape is changing, and the game is baddening up. </p>
 </article>
 
