@@ -1,23 +1,64 @@
-The main purpose of the CPU is to do arithmetic or logical calculations. Have a bunch of them and you have a program. These calculations are done by sending one instruction at a time. An instruction can be move this number to this place, or add this number to number in that place, or it could be put the outcome in that place. The list of all the instructions that the processor supports is referred to as the Instructions Set. 
+
+
+
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8"/>
+<title>About - Advent of Code 2020</title>
+<!--[if lt IE 9]><script src="/static/html5.js"></script><![endif]-->
+<link href='//fonts.googleapis.com/css?family=Source+Code+Pro:300&subset=latin,latin-ext' rel='stylesheet' type='text/css'/>
+<link rel="stylesheet" type="text/css" href="/static/style.css?25"/>
+<link rel="stylesheet alternate" type="text/css" href="/static/highcontrast.css?0" title="High Contrast"/>
+<link rel="shortcut icon" href="/favicon.png"/>
+</head>
+<body>
+<header>
+<div>
+<h1 class="title-global"><a href="/">Mo Osman (~Snake~)</a></h1>
+
+<nav><ul>
+<li><a href="/about">[About]</a></li>
+<li><a href="/auth/logout">[Log Out]</a></li>
+</ul></nav>
+
+</div>
+
+</header>
+
+
+<main>
+<article>
+<p>The main purpose of the CPU is to do arithmetic or logical calculations. Have a bunch of them and you have a program. These calculations are done by sending one instruction at a time. An instruction can be move this number to this place, or add this number to number in that place, or it could be put the outcome in that place. The list of all the instructions that the processor supports is referred to as the Instructions Set. 
 Back to out one instruction at a time interface with the processor. The sentence is a bit vague. How detailed this instruction is? is is SIMPLE as in just add a to b, or can it be COMPLEX as in multiply a by b. The multiplication is a single instruction that can be done as a bunch of additions, or can be done by a complex hardware that takes care of all the steps together. This distinction about having a clean, and minimal set of instructions (i.e. interface) or a complex and wealthy set is not as superficial as it seems. 
-The simple approach is Called RISC for reduced instruction set architecture, and the complex one is called Complex instruction set architecture. 
+The simple approach is Called RISC for reduced instruction set architecture, and the complex one is called Complex instruction set architecture. </p>
 
-The distinction can be looked at as who does the heavy lifting, the programmer or the hardware. With RISC simplicity, the complexity of the program has to be compensated for by the programmer, while the complex CISC makes it hard for the hardware developer but easy for the programmer. Here are some distinctions: 
-1- simple RISC only provides single clock instructions only. Complex CISC have multiple clock complex instructions. 
-2- simple RISC can only move data between registers, while complex CISC is more able. It can move data between memory locations. 
-3- simple RISC therefore leads to large code size, while complex CISC has smaller program sizes. 
-4- simple RISC can use the extra transistors for memory registers. Complex CISC already used many extra transistors for implementing complex instructions. 
+<p>The distinction can be looked at as who does the heavy lifting, the programmer or the hardware. With RISC simplicity, the complexity of the program has to be compensated for by the programmer, while the complex CISC makes it hard for the hardware developer but easy for the programmer. Here are some distinctions: 
+  <ul>
+<li>simple RISC only provides single clock instructions only. Complex CISC have multiple clock complex instructions. </li>
+<li> simple RISC can only move data between registers, while complex CISC is more able. It can move data between memory locations. </li>
+<li>simple RISC therefore leads to large code size, while complex CISC has smaller program sizes. </li>
+<li> simple RISC can use the extra transistors for memory registers. Complex CISC already used many extra transistors for implementing complex instructions. </li>
+  </ul>
+</p>
+<p>Think about the simplicity of the Swiss knife vs the complexity of a large tool box. </p>
 
-Think about the simplicity of the Swiss knife vs the complexity of a large tool box. 
+<p>But which approach is better? The simple or the complex. Bro, this is a deep life question. But let's focus on microprocessors. </p>
+At the moment, two big players are on the field. The first one is the American Intel, with its complex CISC. The other is the British ARM, with its simple RISC. Intel wanted to be the Ferrari, getting the best performance out of the CPU. ARM wanted to save on fuel, they selected RISC which provides high energy efficiency. </p>
 
-But which approach is better? The simple or the complex. Bro, this is a deep life question. But let's focus on microprocessors. 
-At the moment, two big players are on the field. The first one is the American Intel, with its complex CISC. The other is the British ARM, with its simple RISC. Intel wanted to be the Ferrari, getting the best performance out of the CPU. ARM wanted to save on fuel, they selected RISC which provides high energy efficiency. 
+<p>Indeed, ARM's lower energy consumption is what made it occupy the smartphone market. Smartphones operate on batteries. Their TDP (Thermal design power) requirement is only 3.5W. Intel's core I7 on the other hand has a 100W TDP. It makes it good when high performance is needed such as in Servers and high performance desktops. </p>
 
-Indeed, ARM's lower energy consumption is what made it occupy the smartphone market. Smartphones operate on batteries. Their TDP (Thermal design power) requirement is only 3.5W. Intel's core I7 on the other hand has a 100W TDP. It makes it good when high performance is needed such as in Servers and high performance desktops. 
+<p>Is it one design for each application requirement? Or can ARM scale its performance when needed? Can Intel scale down its performance to consume very low power? </p>
 
-Is it one design for each application requirement? Or can ARM scale its performance when needed? Can Intel scale down its performance to consume very low power? 
+<p>However, this question is not separate from other important factors. Intel business model is different from ARMs. While ARM only focuses on the design of CPU cores and licensing them to their clients (such as Qualcomm and Apple), and let them care about fabrication later, Intel does everything in-house. Intel wins with the vertical integration and ecosystem but ARM win by having their clients having access to the innovative fabrication facilities such as TSMC in Taiwan. TSMC at the moment have a 5nm process node while Intel is stuck at 14nm from 2014. </p>
 
-However, this question is not separate from other important factors. Intel business model is different from ARMs. While ARM only focuses on the design of CPU cores and licensing them to their clients (such as Qualcomm and Apple), and let them care about fabrication later, Intel does everything in-house. Intel wins with the vertical integration and ecosystem but ARM win by having their clients having access to the innovative fabrication facilities such as TSMC in Taiwan. TSMC at the moment have a 5nm process node while Intel is stuck at 14nm from 2014. 
+<p>At the moment of writing, things are still unclear. ARM is venturing into the laptop and desktop market. Apple's M1 which is a custom IP license is used in the latest Apple Mac book pro and air. Its performance is ahead of its predecessors using Intel's. Nvidia has bought ARM from SoftBank, and Nvidia is aiming big at the data centres business. Intel isn't going to sit there and watch, they definitely have something up their sleeve. 
+  The landscape is changing, and the game is baddening up. </p>
+</article>
 
-At the moment of writing, things are still unclear. ARM is venturing into the laptop and desktop market. Apple's M1 which is a custom IP license is used in the latest Apple Mac book pro and air. Its performance is ahead of its predecessors using Intel's. Nvidia has bought ARM from SoftBank, and Nvidia is aiming big at the data centres business. Intel isn't going to sit there and watch, they definitely have something up their sleeve. 
-The landscape is changing, and the game is baddening up. 
+</main>
+
+</body>
+</html>
+
