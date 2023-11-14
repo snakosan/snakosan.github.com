@@ -160,7 +160,53 @@
 
 
     <span class="h1">Linux understanding journey</span>
-Here I will be blogging in my own way about learning Linux internals by going through inconventional means and wandering.
+<p>Here I will be blogging in my own way about learning Linux internals by going through inconventional means and wandering.
+I found reading logs to be a very useful way of Learning, It helps you discover and understand. here is a log I found online: 
+The log starts with some strange characters followed by SeaBios, and its version.</p> 
+<p>from https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797 it turns out these are terminal codes and escape characters.
+they specify commands sent to the console. the command starts with [ followed by the command type. The 2J is used for Erasing the 
+Entire screen, while the [0m is used to reset all modes styles and colors. The [?7l indicates private mode setting with wrap around mode. 
+SeaBIOS is an open source implementation to the x86 BIOS. It can be used on bare metal x86 systems or emulators such as Qemu. the 
+version number is for SeaBIOS.</p> 
+<p>Booting from ROM indicates executing the Boot ROM. which is the first stage of the boot sequence residing in the ROM and has a small size
+10s of KBs. Its purpose is to determine the boot source and load the second stage boot image into RAM.</p> 
+<p>I have no idea what the <5> is. but the number in quotes is the timestamp. </p>
+<p>The linux version is 6.6.1 release candidate 1 (rc1), built with tuxmake suite, for x86_64, the Intel 64 bit version of the x86 instruction set, 
+The linux-gnu-gcc specifies the compiler toolchain used to build the kernel. It was built using Debian GCC v13.2. It uses GNU Binutils 2.41 for 
+Debian. The Gnu Binutils are a set of binary tools, mainly ld, the GNU linker, as, the GNU assembler, and gold, and ELF only linker. </p>
+<p>The SMP indicates that it was build for Symmetric multiprocessing, while the PREEMP_DYNAMIC indicates that it was build as a preemptible kernel. 
+The 1699277113 either meant some memory location or a timestamp. checking it online it translates to Nov 6th 2023 which matches the time the log 
+was generated.</p> 
 
+
+c[?7l[2J[0mSeaBIOS (version 1.16.2-debian-1.16.2-1)
+Booting from ROM...
+early console in setup code
+c[?7l[2J<5>[    0.000000] Linux version 6.6.1-rc1 (tuxmake@tuxmake) (x86_64-linux-gnu-gcc (Debian 13.2.0-5) 13.2.0, 
+GNU ld (GNU Binutils for Debian) 2.41) #1 SMP PREEMPT_DYNAMIC @1699277113
+<6>[    0.000000] Command line: console=ttyS0,115200 rootwait root=/dev/sda debug verbose 
+console_msg_format=syslog systemd.log_level=warning rw earlycon
+<6>[    0.000000] BIOS-provided physical RAM map:
+<6>[    0.000000] BIOS-e820: [mem 0x0000000000000000-0x000000000009fbff] usable
+<6>[    0.000000] BIOS-e820: [mem 0x000000000009fc00-0x000000000009ffff] reserved
+<6>[    0.000000] BIOS-e820: [mem 0x00000000000f0000-0x00000000000fffff] reserved
+<6>[    0.000000] BIOS-e820: [mem 0x0000000000100000-0x000000007ffdefff] usable
+<6>[    0.000000] BIOS-e820: [mem 0x000000007ffdf000-0x000000007fffffff] reserved
+<6>[    0.000000] BIOS-e820: [mem 0x00000000b0000000-0x00000000bfffffff] reserved
+<6>[    0.000000] BIOS-e820: [mem 0x00000000fed1c000-0x00000000fed1ffff] reserved
+<6>[    0.000000] BIOS-e820: [mem 0x00000000fffc0000-0x00000000ffffffff] reserved
+<6>[    0.000000] BIOS-e820: [mem 0x0000000100000000-0x000000017fffffff] usable
+<6>[    0.000000] NX (Execute Disable) protection: active
+<6>[    0.000000] APIC: Static calls initialized
+<6>[    0.000000] SMBIOS 3.0.0 present.
+<6>[    0.000000] DMI: QEMU Standard PC (Q35 + ICH9, 2009), BIOS 1.16.2-debian-1.16.2-1 04/01/2014
+<6>[    0.000000] tsc: Fast TSC calibration using PIT
+<6>[    0.000000] tsc: Detected 2649.913 MHz processor
+<7>[    0.012157] e820: update [mem 0x00000000-0x00000fff] usable ==> reserved
+<7>[    0.012372] e820: remove [mem 0x000a0000-0x000fffff] usable
+<6>[    0.012582] last_pfn = 0x180000 max_arch_pfn = 0x400000000
+<6>[    0.013159] MTRR map: 4 entries (3 fixed + 1 variable; max 19), built from 8 variable MTRRs
+<6>[    0.013342] x86/PAT: Configuration [0-7]: WB  WC  UC- UC  WB  WP  UC- WT  
+<6>[    0.014429] last_pfn = 0x7ffdf max_arch_pfn = 0x400000000
 </body>
 </html>

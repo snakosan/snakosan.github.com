@@ -1,240 +1,179 @@
+<!doctype html>
+<html lang="en">
 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-    <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="robots" content="index,follow" />
-    <meta name="creator" content="rfchandler version 0.2" />
-      <meta name="citation_author" content="Mohamed O.I. Musa"/>
+  <title>Blog</title>
 
-<title>RFC 1945:  Hypertext Transfer Protocol -- HTTP/1.0 </title>
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/blog/">
 
+  <!-- Bootstrap core CSS -->
+  <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <style type="text/css">
-	@media only screen
-	  and (min-width: 992px)
-	  and (max-width: 1199px) {
-	    body { font-size: 14pt; }
-            div.content { width: 96ex; margin: 0 auto; }
-        }
-	@media only screen
-	  and (min-width: 768px)
-	  and (max-width: 991px) {
-            body { font-size: 14pt; }
-            div.content { width: 96ex; margin: 0 auto; }
-        }
-	@media only screen
-	  and (min-width: 480px)
-	  and (max-width: 767px) {
-            body { font-size: 11pt; }
-            div.content { width: 96ex; margin: 0 auto; }
-        }
-	@media only screen
-	  and (max-width: 479px) {
-            body { font-size: 8pt; }
-            div.content { width: 96ex; margin: 0 auto; }
-        }
-	@media only screen
-	  and (min-device-width : 375px)
-	  and (max-device-width : 667px) {
-            body { font-size: 9.5pt; }
-            div.content { width: 96ex; margin: 0; }
-        }
-	@media only screen
-	  and (min-device-width: 1200px) {
-            body { font-size: 10pt; margin: 0 4em; }
-            div.content { width: 96ex; margin: 0; }
-        }
-        h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-	    font-weight: bold;
-           /* line-height: 0pt; */
-            display: inline;
-            white-space: pre;
-            font-family: monospace;
-            font-size: 1em;
-	    font-weight: bold;
-        }
-        pre {
-            font-size: 1em;
-            margin-top: 0px;
-            margin-bottom: 0px;
-        }
-	.pre {
-	    white-space: pre;
-	    font-family: monospace;
+  <!-- Custom styles for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+  <link href="https://getbootstrap.com/docs/4.0/examples/blog/blog.css" rel="stylesheet">
+</head>
+<style>
+pre { 
+	 padding: 20px; 
+	color: #aaa; background-color: #222;
+	white-space: pre; text-shadow: 0 1px 0 #000;
+	border-radius: 15px; border-bottom: 1px solid #555;
+	box-shadow: 0 1px 5px rgba(0,0,0,0.4) inset, 0 0 20px rgba(0,0,0,0.2) inset;
+	font: 16px/24px 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
 	}
-	.header{
-	    font-weight: bold;
-	}
-        .newpage {
-            page-break-before: always;
-        }
-        .invisible {
-            text-decoration: none;
-            color: white;
-        }
-        a.selflink {
-          color: black;
-          text-decoration: none;
-        }
-        @media print {
-            body {
-                font-family: monospace;
-                font-size: 10.5pt;
-            }
-            h1, h2, h3, h4, h5, h6 {
-                font-size: 1em;
-            }
-
-            a:link, a:visited {
-                color: inherit;
-                text-decoration: none;
-            }
-            .noprint {
-                display: none;
-            }
-        }
-	@media screen {
-	    .grey, .grey a:link, .grey a:visited {
-		color: #777;
-	    }
-            .docinfo {
-                background-color: #EEE;
-            }
-            .top {
-                border-top: 7px solid #EEE;
-            }
-            .bgwhite  { background-color: white; }
-            .bgred    { background-color: #F44; }
-            .bggrey   { background-color: #666; }
-            .bgbrown  { background-color: #840; }
-            .bgorange { background-color: #FA0; }
-            .bgyellow { background-color: #EE0; }
-            .bgmagenta{ background-color: #F4F; }
-            .bgblue   { background-color: #66F; }
-            .bgcyan   { background-color: #4DD; }
-            .bggreen  { background-color: #4F4; }
-
-            .legend   { font-size: 90%; }
-            .cplate   { font-size: 70%; border: solid grey 1px; }
-	}
-    </style>
-    <!--[if IE]>
-    <style>
-    body {
-       font-size: 13px;
-       margin: 10px 10px;
-    }
-    </style>
-    <![endif]-->    <script type="text/javascript"><!--
-    function addHeaderTags() {
-        var spans = document.getElementsByTagName("span");
-        for (var i=0; i < spans.length; i++) {
-            var elem = spans[i];
-            if (elem) {
-                var level = elem.getAttribute("class");
-                if (level == "h1" || level == "h2" || level == "h3" || level == "h4" || level == "h5" || level == "h6") {
-                    elem.innerHTML = "<"+level+">"+elem.innerHTML+"</"+level+">";
-                }
-            }
-        }
-    }
-    var legend_html = "Colour legend:<br />      <table>         <tr><td>Unknown:</td>                   <td><span class='cplate bgwhite'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Draft:</td>                     <td><span class='cplate bgred'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Informational:</td>             <td><span class='cplate bgorange'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Experimental:</td>              <td><span class='cplate bgyellow'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Best Common Practice:</td>      <td><span class='cplate bgmagenta'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Proposed Standard:</td>         <td><span class='cplate bgblue'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Draft Standard (old designation):</td> <td><span class='cplate bgcyan'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Internet Standard:</td>         <td><span class='cplate bggreen'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Historic:</td>                  <td><span class='cplate bggrey'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Obsolete:</td>                  <td><span class='cplate bgbrown'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>     </table>";
-    function showElem(id) {
-        var elem = document.getElementById(id);
-        elem.innerHTML = eval(id+"_html");
-        elem.style.visibility='visible';
-    }
-    function hideElem(id) {
-        var elem = document.getElementById(id);
-        elem.style.visibility='hidden';
-        elem.innerHTML = "";
-    }
-    // -->
-    </script></head>
+</style>
 <body>
-  <span class="pre noprint docinfo">[<a href="index.html" title="Home">Home</a>]     </span>
-  <pre><h3>Fast lane Wanderer </h3>   
+
+  <div class="container">
+    <header class="blog-header py-3">
+      <div class="row flex-nowrap justify-content-between align-items-center">
+        <div class="col-4 pt-1">
+          <a class="text-muted" href="index.html">home</a>
+
+        </div>
+        <div class="col-4 text-center">
+          <a class="blog-header-logo text-dark" href="#">Dr Snake</a>
+        </div>
+        <div class="col-4 d-flex justify-content-end align-items-center">
+
+          <a class="btn btn-sm btn-outline-secondary" href="#">Subscribe</a>
+        </div>
+      </div>
+    </header>
+    <br>
+  </div>
+
+  <main role="main" class="container">
+    <div class="row">
+      <div class="col-md-8 blog-main">
+        <h3 class="pb-3 mb-4 font-italic border-bottom">
+          Fast lane wanderer
+        </h3>
+
+        <div class="blog-post">
+          <h2 class="blog-post-title">Arm and Intel, less is more?</h2>
+<br>
+          <p>The main purpose of the CPU is to do logical and arithmetic calculations.
+            Have a bunch of them and you have a program. These calculations are done by sending one instruction at a
+            time.
+            Move this number here, add this number to the number in that place, and put the outcome there, are examples.
+          </p>
+          <p>The instruction set is the set of all supported instructions by the
+            CPU. But, how detailed this instruction should be? SIMPLE as in just
+            add a to b, or COMPLEX as in multiply a by b.</p>
+          <p>The multiplication can be done as a single or many instructions. Single
+            instruction needs a complex hardware that performs all the steps. This
+            distinction between a clean, and minimal instruction set (i.e. interface)
+            and a complex, wealthy set is not as superficial as it seems.</p>
+
+          <p>The simple approach is Called RISC for reduced instruction set computer,
+            while the Complex instruction set computer is CISC.</p>
+          <p>The distinction is about who does the heavy lifting, the programmer or
+            the hardware. With RISC simplicity, the complexity of the program is
+            compensated for by the programmer. For CISC, it is harder for the hardware
+            developer but easy for the programmer. Here are more distinctions:</p>
+          <ul>
+
+            <li>
+              Simple RISC provides single clock instructions only. Complex CISC have
+              multiple-clock complex instructions.
+            </li>
+            <li>
+              Simple RISC can only move data between registers. Complex CISC is more
+              able. It can move data even between memory locations.
+            </li>
+            <li>
+              Simple RISC leads to larger code size.
+            </li>
+            <li>
+              Simple RISC can use more extra transistors for memory registers.
+              Complex CISC needs more for complex instructions.
+            </li>
+          </ul>
+
+          <p>
+            Think about the simplicity of the Swiss knife vs the complexity of a large
+            tool box.
+          </p>
+
+          <p>
+            But which approach is better? The simple or the complex. This is a deep
+            life question. But let's focus on microprocessors.
+          </p>
+
+          <p>
+            At the moment, two big players are on the field. The first is the American
+            Intel, with its complex CISC. The other is the British ARM, with its simple
+            RISC. Intel wanted to be the Ferrari, getting the best performance out of
+            the CPU. ARM wanted to save on fuel, they RISC'ed it for high energy efficiency.
+          </p>
+
+          <p>
+            Indeed, ARM's lower energy consumption is what made it occupy the smartphone
+            market. Smartphones operate on batteries. Their TDP (Thermal design power)
+            requirement is only 3.5W. Intel's core I7 has a 100W TDP. This is good when
+            high performance is needed such as in Servers and high performance desktops.
+          </p>
+
+          <p>
+            can ARM scale up its performance when needed? Can Intel scale down its
+            performance to consume very low power?
+          </p>
+
+          <p>
+            However, this question is not separate from other important factors. Intel
+            business model is different from ARMs. While ARM only focuses on the design
+            of CPU cores and licensing them to their clients (such as Qualcomm and Apple).
+            Intel does everything in-house. Intel wins with the vertical integration and
+            ecosystem but ARM win by having their clients having access to the innovative
+            fabrication facilities such as TSMC in Taiwan. TSMC at the moment have a 5nm
+            process node while Intel is stuck at 14nm from 2014.
+          </p>
+
+          <p>
+            At the moment of writing, things are still unclear. ARM is venturing
+            into the laptop and desktop market. Apple's M1 which is a custom IP
+            license is used in the latest Apple Mac book pro and air. Its performance
+            is ahead of its predecessors using Intel's.
+            Nvidia has bought ARM from SoftBank, and Nvidia is aiming big at the data
+            centres business. Intel isn't going to sit there and watch, they definitely
+            have something up their sleeve.
+          </p>
+        </div><!-- /.blog-post -->
 
 
+      </div><!-- /.blog-main -->
+
+      <aside class="col-md-4 blog-sidebar">
+        <div class="p-3 mb-3 bg-light rounded">
+          <h4 class="font-italic">About</h4>
+          <p class="mb-0"> A blog about random wandering about different topics. Mostly technology</p>
+        </div>
 
 
+      </aside><!-- /.blog-sidebar -->
 
-                <span class="h1">Arm and Intel, less is more?</span>
+    </div><!-- /.row -->
+
+  </main><!-- /.container -->
 
 
-
-<span class="h2"><a class="selflink" id="section-1" href="#section-1">1</a>.  Introduction</span>
-
-
-   The main purpose of the CPU is to do logical and arithmetic
-   calculations. Have a bunch of them and you have a program. These
-   calculations are done by sending one instruction at a time. Move
-   this number here, add this number to the number in that place,
-   and put the outcome there, are examples.
-
-   The instruction set is the set of all supported instructions by the
-   CPU. But, how detailed this instruction should be? SIMPLE as in just
-   add a to b, or COMPLEX as in multiply a by b.
-
-   The multiplication can be done as a single or many instructions. Single
-   instruction needs a complex hardware that performs all the steps. This
-   distinction between a clean, and minimal instruction set (i.e. interface)
-   and a complex, wealthy set is not as superficial as it seems.
-
-   The simple approach is Called RISC for reduced instruction set computer,
-   while the Complex instruction set computer is CISC.
-
-   The distinction is about who does the heavy lifting, the programmer or
-   the hardware. With RISC simplicity, the complexity of the program is
-   compensated for by the programmer. For CISC, it is harder for the hardware
-   developer but easy for the programmer. Here are more distinctions:
-
-   * Simple RISC provides single clock instructions only. Complex CISC have
-      multiple-clock complex instructions.
-   * Simple RISC can only move data between registers. Complex CISC is more
-      able. It can move data even between memory locations.
-   * Simple RISC leads to larger code size.
-   * Simple RISC can use more extra transistors for memory registers.
-      Complex CISC needs more for complex instructions.
-
-   Think about the simplicity of the Swiss knife vs the complexity of a large
-   tool box.
-
-   But which approach is better? The simple or the complex. This is a deep
-   life question. But let's focus on microprocessors.
-
-   At the moment, two big players are on the field. The first is the American
-   Intel, with its complex CISC. The other is the British ARM, with its simple
-   RISC. Intel wanted to be the Ferrari, getting the best performance out of
-   the CPU. ARM wanted to save on fuel, they RISC'ed it for high energy efficiency.
-
-   Indeed, ARM's lower energy consumption is what made it occupy the smartphone
-   market. Smartphones operate on batteries. Their TDP (Thermal design power)
-   requirement is only 3.5W. Intel's core I7 has a 100W TDP. This is good when
-   high performance is needed such as in Servers and high performance desktops.
-
-   can ARM scale up its performance when needed? Can Intel scale down its
-   performance to consume very low power?
-
-   However, this question is not separate from other important factors. Intel
-   business model is different from ARMs. While ARM only focuses on the design
-   of CPU cores and licensing them to their clients (such as Qualcomm and Apple).
-   Intel does everything in-house. Intel wins with the vertical integration and
-   ecosystem but ARM win by having their clients having access to the innovative
-   fabrication facilities such as TSMC in Taiwan. TSMC at the moment have a 5nm
-   process node while Intel is stuck at 14nm from 2014.
-
-   At the moment of writing, things are still unclear. ARM is venturing
-   into the laptop and desktop market. Apple's M1 which is a custom IP
-   license is used in the latest Apple Mac book pro and air. Its performance
-   is ahead of its predecessors using Intel's.
-   Nvidia has bought ARM from SoftBank, and Nvidia is aiming big at the data
-   centres business. Intel isn't going to sit there and watch, they definitely
-    have something up their sleeve.
-
-</pre>
-
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+  <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
+  <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
+  <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/holder.min.js"></script>
 </body>
+
 </html>
