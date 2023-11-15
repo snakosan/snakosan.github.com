@@ -1,296 +1,227 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!doctype html>
+<html lang="en">
+
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title>RFC 1945: Hypertext Transfer Protocol -- HTTP/1.0</title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2113">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
+  <title>Blog</title>
 
-  <style type="text/css">
-    @media only screen
-      and (min-width: 992px)
-      and (max-width: 1199px) {
-        body { font-size: 14pt; }
-              div.content { width: 96ex; margin: 0 auto; }
-          }
-    @media only screen
-      and (min-width: 768px)
-      and (max-width: 991px) {
-              body { font-size: 14pt; }
-              div.content { width: 96ex; margin: 0 auto; }
-          }
-    @media only screen
-      and (min-width: 480px)
-      and (max-width: 767px) {
-              body { font-size: 11pt; }
-              div.content { width: 96ex; margin: 0 auto; }
-          }
-    @media only screen
-      and (max-width: 479px) {
-              body { font-size: 8pt; }
-              div.content { width: 96ex; margin: 0 auto; }
-          }
-    @media only screen
-      and (min-device-width : 375px)
-      and (max-device-width : 667px) {
-              body { font-size: 9.5pt; }
-              div.content { width: 96ex; margin: 0; }
-          }
-    @media only screen
-      and (min-device-width: 1200px) {
-              body { font-size: 10pt; margin: 0 4em; }
-              div.content { width: 96ex; margin: 0; }
-          }
-          h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-        font-weight: bold;
-             /* line-height: 0pt; */
-              display: inline;
-              white-space: pre;
-              font-family: monospace;
-              font-size: 1em;
-        font-weight: bold;
-          }
-          pre {
-              font-size: 1em;
-              margin-top: 0px;
-              margin-bottom: 0px;
-          }
-    .pre {
-        white-space: pre;
-        font-family: monospace;
-    }
-    .header{
-        font-weight: bold;
-    }
-          .newpage {
-              page-break-before: always;
-          }
-          .invisible {
-              text-decoration: none;
-              color: white;
-          }
-          a.selflink {
-            color: black;
-            text-decoration: none;
-          }
-          @media print {
-              body {
-                  font-family: monospace;
-                  font-size: 10.5pt;
-              }
-              h1, h2, h3, h4, h5, h6 {
-                  font-size: 1em;
-              }
-  
-              a:link, a:visited {
-                  color: inherit;
-                  text-decoration: none;
-              }
-              .noprint {
-                  display: none;
-              }
-          }
-    @media screen {
-        .grey, .grey a:link, .grey a:visited {
-      color: #777;
-        }
-              .docinfo {
-                  background-color: #EEE;
-              }
-              .top {
-                  border-top: 7px solid #EEE;
-              }
-              .bgwhite  { background-color: white; }
-              .bgred    { background-color: #F44; }
-              .bggrey   { background-color: #666; }
-              .bgbrown  { background-color: #840; }
-              .bgorange { background-color: #FA0; }
-              .bgyellow { background-color: #EE0; }
-              .bgmagenta{ background-color: #F4F; }
-              .bgblue   { background-color: #66F; }
-              .bgcyan   { background-color: #4DD; }
-              .bggreen  { background-color: #4F4; }
-  
-              .legend   { font-size: 90%; }
-              .cplate   { font-size: 70%; border: solid grey 1px; }
-    }
-      </style>
-      <!--[if IE]>
-      <style>
-      body {
-         font-size: 13px;
-         margin: 10px 10px;
-      }
-      </style>
-      <![endif]-->    <script type="text/javascript"><!--
-      function addHeaderTags() {
-          var spans = document.getElementsByTagName("span");
-          for (var i=0; i < spans.length; i++) {
-              var elem = spans[i];
-              if (elem) {
-                  var level = elem.getAttribute("class");
-                  if (level == "h1" || level == "h2" || level == "h3" || level == "h4" || level == "h5" || level == "h6") {
-                      elem.innerHTML = "<"+level+">"+elem.innerHTML+"</"+level+">";
-                  }
-              }
-          }
-      }
-      var legend_html = "Colour legend:<br />      <table>         <tr><td>Unknown:</td>                   <td><span class='cplate bgwhite'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Draft:</td>                     <td><span class='cplate bgred'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Informational:</td>             <td><span class='cplate bgorange'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Experimental:</td>              <td><span class='cplate bgyellow'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Best Common Practice:</td>      <td><span class='cplate bgmagenta'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Proposed Standard:</td>         <td><span class='cplate bgblue'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Draft Standard (old designation):</td> <td><span class='cplate bgcyan'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Internet Standard:</td>         <td><span class='cplate bggreen'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Historic:</td>                  <td><span class='cplate bggrey'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Obsolete:</td>                  <td><span class='cplate bgbrown'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>     </table>";
-      function showElem(id) {
-          var elem = document.getElementById(id);
-          elem.innerHTML = eval(id+"_html");
-          elem.style.visibility='visible';
-      }
-      function hideElem(id) {
-          var elem = document.getElementById(id);
-          elem.style.visibility='hidden';
-          elem.innerHTML = "";
-      }
-      // -->
-      </script></head>
-  <body>
-  <span class="pre noprint docinfo">[<a href="index.html" title="Home">Home</a>]     </span>
-  <pre><h3>Fast lane Wanderer </h3>
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/blog/">
 
-<pre>  
+  <!-- Bootstrap core CSS -->
+  <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
+  <!-- Custom styles for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+  <link href="https://getbootstrap.com/docs/4.0/examples/blog/blog.css" rel="stylesheet">
+</head>
+<style>
+pre { 
+	 padding: 20px; 
+	color: #aaa; background-color: #222;
+	white-space: pre; text-shadow: 0 1px 0 #000;
+	border-radius: 15px; border-bottom: 1px solid #555;
+	box-shadow: 0 1px 5px rgba(0,0,0,0.4) inset, 0 0 20px rgba(0,0,0,0.2) inset;
+	font: 16px/24px 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+	}
+</style>
+<body>
 
-<h4>If you want to make money, don't create a startup, create an 
-industry. you will get trillions instead of millions.</h4>
+  <div class="container">
+    <header class="blog-header py-3">
+      <div class="row flex-nowrap justify-content-between align-items-center">
+        <div class="col-4 pt-1">
+          <a class="text-muted" href="index.html">home</a>
 
-<h4>difference between invention and innovation: </h4>
-  - Not going incrementally but carving out new thing. 
-  - If you think about the present, your ideas will be incremental 
-  - "Learn the rules like a pro, to break them like an artist" -Picasso 
+        </div>
+        <div class="col-4 text-center">
+          <a class="blog-header-logo text-dark" href="#">Dr Snake</a>
+        </div>
+        <div class="col-4 d-flex justify-content-end align-items-center">
 
- 	- not doing this is the silicon valleys biggest sin since the 80s, 
-  - nobody bothered becoming a pro in software development or graphical interface
+          <a class="btn btn-sm btn-outline-secondary" href="#">Subscribe</a>
+        </div>
+      </div>
+    </header>
+    <br>
+  </div>
 
+  <main role="main" class="container">
+    <div class="row">
+      <div class="col-md-8 blog-main">
+        <h3 class="pb-3 mb-4 font-italic border-bottom">
+          Fast lane wanderer
+        </h3>
 
-* XEROX PARC inventions:
-  - personal computer, came 11 years before commercial Mac
-  - GUI
-  - WSYWIG (symmetrical reading and writing). not like the web which is made
-    for consumption rather than authoring. 
-  - Object oriented programming. (not like the current OOP)
-  - laser printer 
-  - Post script and fonts
-  - Ethernet 
-  - P2P and client server 
+        <div class="blog-post">
+          <h2 class="blog-post-title">How to invent the future, Alan Kay</h2>
+<br>
 
-- only needed 25 researcher for 5 years 
-- Cost about $10M-12M in todays money. 
-- returns $35Trillion 
-- Big companies refuse to have new businesses and ideas. otherwise
- startups wouldn't exist. 
-- Real Xerox PARC ended in 1983 when Bob Taylor got fired and the
- entire team left with him. 
-- We are born in a world not the same as the one that led to PARC. 
-- Read "The dream machine- Licklider"
-- read "the power of the context-by alan kay"
-- whatever is going on these days is crap. 
-- US was on WW2 for 3.5 years only but lots of things got done. 
-    - Manhatten project, Radar project, SAGE air defence
-- Ivan Sutherland Sketchpad. WOW shocking . Done it in one year 
-  for PhD thesis. read it.
+<h5>If you want to make money, don't create a startup, create an 
+industry. you will get trillions instead of millions.</h5>
+<br>
+<h6>Difference between invention and innovation: </h6>
+<ul>
+  <li>Not going incrementally but carving out new thing.</li>
+  <li>If you think about the present, your ideas will be incremental </li>
+  <li>"Learn the rules like a pro, to break them like an artist" -Picasso</li>
+  <li>Not doing this is the silicon valleys biggest sin since the 80s,</li>
+  <li>Nobody bothered becoming a pro in software development or graphical interface</li>
+</ul>
+
+<h6>XEROX PARC inventions: </h6>
+
+<ul>
+  <li>personal computer, came 11 years before commercial Mac.</li>
+  <li>GUI </li>
+  <li>WSYWIG (symmetrical reading and writing). not like the web which is made
+    for consumption rather than authoring.</li>
+  <li>Object oriented programming. (not like the current OOP)</li>
+  <li>laser printer </li>
+  <li>Post script and fonts</li>
+  <li>Ethernet</li>
+  <li>P2P and client server </li>
+  <li>only needed 25 researcher for 5 years </li>
+  <li>Cost about $10M-12M in todays money. </li>
+  <li>returns $35Trillion </li>
+  <li>Big companies refuse to have new businesses and ideas. otherwise
+    startups wouldn't exist. </li>
+    <li>Real Xerox PARC ended in 1983 when Bob Taylor got fired and the
+      entire team left with him. </li>
+      <li>We are born in a world not the same as the one that led to PARC. </li>
+      <li>Read "The dream machine- Licklider"</li>
+<li>read "the power of the context-by alan kay"</li>
+<li>whatever is going on these days is crap. </li>
+<li>US was on WW2 for 3.5 years only but lots of things got done. </li>
+<li>Manhatten project, Radar project, SAGE air defence</li>
+<li>Ivan Sutherland Sketchpad. WOW shocking . Done it in one year 
+  for PhD thesis. read it.</li>
+</ul>
 
 <h4>Licklider: </h4>
-- pick and idea to dedicate your whole life to. Really advance
-      something really important
-- forget about goals. Only Visions. 
-- fund people not projects 
-- only fund the very best people. (McArthur for groups)
-- its a research community not a project.
-- fund problem finding not solving.
-- milestones not deadlines.
-- baseball not golf , 5 yr commitment.
-- if you can make your tools , HW and SW then do 
-- software drives hardware rather than vice versa. 
-- make enough of inventions so that more than inventors can use them. 
-- Argue for clarity , not to win. 
-
+<ul>
+  <li>pick and idea to dedicate your whole life to. Really advance
+    something really important</li>
+<li>forget about goals. Only Visions. </li> 
+<li>fund people not projects </li>
+<li>only fund the very best people. (McArthur for groups)</li>
+<li>its a research community not a project.</li>
+<li>fund problem finding not solving.</li>
+<li>milestones not deadlines.</li>
+<li>baseball not golf , 5 yr commitment.</li>
+<li>if you can make your tools , HW and SW then do</li>
+<li>software drives hardware rather than vice versa. </li>
+<li>make enough of inventions so that more than inventors can use them.</li>
+<li>Argue for clarity , not to win. </li>
+</ul>
 
 <h4>Wayne Gretzky: </h4>
-"a good hockey player goes to where the puck is, 
-  a great one goes to where it will be"
-1- Develop a good cosmic intuition.
-2- Identify favourable exponential. 
-3- Take the intuition out 30 years ahead.
-4- Can we say "it would be rediculous if we didn't have this"?
-5- Bring it back to the 10-15 yrs point. can something be done?
-6- Make a bunch of flexible supercomputers and adapt to design learning.
-7- Invent software for the future.
-
+<ul>
+  <li>a good hockey player goes to where the puck is, 
+    a great one goes to where it will be"</li>
+    <li>Develop a good cosmic intuition.</li>
+    <li>Identify favourable exponential. </li>
+    <li>Take the intuition out 30 years ahead.</li>
+<li>Can we say "it would be rediculous if we didn't have this"?</li>
+<li>Bring it back to the 10-15 yrs point. can something be done?</li>
+<li>Make a bunch of flexible supercomputers and adapt to design learning.</li>
+<li>Invent software for the future</li>
+</ul>
 
 <h4>importance of Context</h4>
-- Imagine you have twice Leonardo Davinci's IQ, would be easy to go to stanford. 
-- but if you born into 1000 BC, how far you gonna get? 
-- Henry Ford was no where near his IQ, created a process for millions of cars
-- Leonardo couldn't invent any motor for his vehicle 
-- Ford born on the right century. 
-- context will give you 80 IQ points 
-- knowledge is silver, context is gold, IQ is just lead. 
+<ul>
+  <li> Imagine you have twice Leonardo Davinci's IQ, would be easy to go to stanford.</li>
+<li>but if you born into 1000 BC, how far you gonna get? </li>
+<li>Henry Ford was no where near his IQ, created a process for millions of cars</li>
+<li>Leonardo couldn't invent any motor for his vehicle </li>
+<li>Ford born on the right century. </li>
+<li>context will give you 80 IQ points</li>
+<li>knowledge is silver, context is gold, IQ is just lead. </li>
+<li>Better and perfect are the enemy of what is actually needed</li>
 
-* Better and perfect are the enemy of what is actually needed. 
 
-- Wayne Gretzky game, go where the puck is going. Design and build for the future and 
-being results back to the present.
-- This is where the trillions rather than the billions come in. 
-- you are in life moving in a plane (say pink), but suddenly, during a shower
- or so, you discover another plane, a blue one, vertical to the pink one. 
- and you say, oh my god... and may be there are other planes out there. 
-
+<li>Wayne Gretzky game, go where the puck is going. Design and build for the future and 
+  being results back to the present.</li>
+<li>This is where the trillions rather than the billions come in. 
+  you are in life moving in a plane (say pink), but suddenly, during a shower
+   or so, you discover another plane, a blue one, vertical to the pink one. 
+   and you say, oh my god... and may be there are other planes out there. </li>
+</ul>
 <h4>Human Universals</h4>
 Anthropoligists studies thousands of cultures and outlines properties
  of them that are never absent: 
-- Genetics hold the desires, and culture fills in the parameters 
-- Hunting /Gathering
-- Coping: we are good with coping, e.g. with hardship 
-- Oral languages 
-- Stories, superstition, religion, magic
-- News 
-- fast thinking, quick reaction to patterns, case based learning 
-- differences over similarities (thats why prog. languages went wrong)
-- vendetta /revenge (best games are vendetta based)
-- fun , games
-	- 
+ <ul>
+  <li>Genetics hold the desires, and culture fills in the parameters </li>
+  <li>Hunting /Gathering</li>
+  <li>Coping: we are good with coping, e.g. with hardship </li>
+<li>Oral languages </li>
+<li>Stories, superstition, religion, magic</li>
+<li>News </li>
+<li>fast thinking, quick reaction to patterns, case based learning </li>
+<li>differences over similarities (thats why prog. languages went wrong)</li>
+<li>vendetta /revenge (best games are vendetta based)</li>
+<li>fun , games</li>
+ </ul>
+
 <h4>Human non-universals</h4>
-- Agriculture. 
-- progress: its an 18th century invention. in all times people lived and 
-  died in the same setting. 
-- writing and reading 
-- science, deductive reasoning, math
-- new
-- slow deep thinking
-- similarities over differences 
-- legal system 
+<ul>
+  <li>Agriculture. </li>
+  <li>progress: its an 18th century invention. in all times people lived and 
+    died in the same setting. </li>
+<li>writing and reading </li>
+<li>science, deductive reasoning, math</li>
+<li>slow deep thinking</li>
+<li>similarities over differences </li>
+<li>legal system </li>
+</ul>
+
+<ul>
+  <li>MacOS, linux and windows systems, but non of them is doing what anglebert
+    was demonstrating. multiple people sharing and collaborating on an entity
+    smoothly, doable but on an operating systems level. </li>
+    <li>
+      Web is bullshit. where is WISYWIG ? you need to press a button to see how
+      it looks? but no one is protesting. 
+    </li>
+    <li>
+      find ways to critisize what looks normal.
+    </li>
+</ul>
+  <h4> Make an amplifier to the human universal list and you will be a billionare </h4>
 	
 
--  MacOS, linux and windows systems, but non of them is doing what anglebert
- was demonstrating. multiple people sharing and collaborating on an entity
- smoothly, doable but on an operating systems level. 
--  Web is bullshit. where is WISYWIG ? you need to press a button to see how
- it looks? but no one is protesting. 
-- find ways to critisize what looks normal. 
-	
-<h3> Make an amplifier to the human universal list and you will be a billionare </h3>
+        </div><!-- /.blog-post -->
 
-</pre>
-<p class="p1"><span class="s3"><br>
-</span></p>
-<p class="p1"><span class="s3"><br>
-</span></p>
-<p class="p1"><span class="s3"><br>
-</span></p>
-<p class="p1"><span class="s3"><br>
-</span></p>
-<p class="p1"><span class="s3"><br>
-</span></p>
-<p class="p1"><span class="s3"><br>
-</span></p>
-<p class="p1"><span class="s3"><br>
-</span></p>
+
+      </div><!-- /.blog-main -->
+
+      <aside class="col-md-4 blog-sidebar">
+        <div class="p-3 mb-3 bg-light rounded">
+          <h4 class="font-italic">About</h4>
+          <p class="mb-0"> A blog about random wandering about different topics. Mostly technology</p>
+        </div>
+
+
+      </aside><!-- /.blog-sidebar -->
+
+    </div><!-- /.row -->
+
+  </main><!-- /.container -->
+
+
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+  <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
+  <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
+  <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/holder.min.js"></script>
 </body>
+
 </html>
