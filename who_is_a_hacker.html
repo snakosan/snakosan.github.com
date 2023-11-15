@@ -1,342 +1,287 @@
+<!doctype html>
+<html lang="en">
 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-    <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="robots" content="index,follow" />
-    <meta name="creator" content="rfchandler version 0.2" />
-      <meta name="citation_author" content="Mohamed O.I. Musa"/>
+  <title>Blog</title>
 
-<title>RFC 1945:  Hypertext Transfer Protocol -- HTTP/1.0 </title>
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/blog/">
 
+  <!-- Bootstrap core CSS -->
+  <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <style type="text/css">
-	@media only screen
-	  and (min-width: 992px)
-	  and (max-width: 1199px) {
-	    body { font-size: 14pt; }
-            div.content { width: 96ex; margin: 0 auto; }
-        }
-	@media only screen
-	  and (min-width: 768px)
-	  and (max-width: 991px) {
-            body { font-size: 14pt; }
-            div.content { width: 96ex; margin: 0 auto; }
-        }
-	@media only screen
-	  and (min-width: 480px)
-	  and (max-width: 767px) {
-            body { font-size: 11pt; }
-            div.content { width: 96ex; margin: 0 auto; }
-        }
-	@media only screen
-	  and (max-width: 479px) {
-            body { font-size: 8pt; }
-            div.content { width: 96ex; margin: 0 auto; }
-        }
-	@media only screen
-	  and (min-device-width : 375px)
-	  and (max-device-width : 667px) {
-            body { font-size: 9.5pt; }
-            div.content { width: 96ex; margin: 0; }
-        }
-	@media only screen
-	  and (min-device-width: 1200px) {
-            body { font-size: 10pt; margin: 0 4em; }
-            div.content { width: 96ex; margin: 0; }
-        }
-        h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-	    font-weight: bold;
-           /* line-height: 0pt; */
-            display: inline;
-            white-space: pre;
-            font-family: monospace;
-            font-size: 1em;
-	    font-weight: bold;
-        }
-        pre {
-            font-size: 1em;
-            margin-top: 0px;
-            margin-bottom: 0px;
-        }
-	.pre {
-	    white-space: pre;
-	    font-family: monospace;
+  <!-- Custom styles for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+  <link href="https://getbootstrap.com/docs/4.0/examples/blog/blog.css" rel="stylesheet">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-57TVX6WN3F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-57TVX6WN3F');
+</script>
+<style>
+pre { 
+	 padding: 20px; 
+	color: #aaa; background-color: #222;
+	white-space: pre; text-shadow: 0 1px 0 #000;
+	border-radius: 15px; border-bottom: 1px solid #555;
+	box-shadow: 0 1px 5px rgba(0,0,0,0.4) inset, 0 0 20px rgba(0,0,0,0.2) inset;
+	font: 16px/24px 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
 	}
-	.header{
-	    font-weight: bold;
-	}
-        .newpage {
-            page-break-before: always;
-        }
-        .invisible {
-            text-decoration: none;
-            color: white;
-        }
-        a.selflink {
-          color: black;
-          text-decoration: none;
-        }
-        @media print {
-            body {
-                font-family: monospace;
-                font-size: 10.5pt;
-            }
-            h1, h2, h3, h4, h5, h6 {
-                font-size: 1em;
-            }
-
-            a:link, a:visited {
-                color: inherit;
-                text-decoration: none;
-            }
-            .noprint {
-                display: none;
-            }
-        }
-	@media screen {
-	    .grey, .grey a:link, .grey a:visited {
-		color: #777;
-	    }
-            .docinfo {
-                background-color: #EEE;
-            }
-            .top {
-                border-top: 7px solid #EEE;
-            }
-            .bgwhite  { background-color: white; }
-            .bgred    { background-color: #F44; }
-            .bggrey   { background-color: #666; }
-            .bgbrown  { background-color: #840; }
-            .bgorange { background-color: #FA0; }
-            .bgyellow { background-color: #EE0; }
-            .bgmagenta{ background-color: #F4F; }
-            .bgblue   { background-color: #66F; }
-            .bgcyan   { background-color: #4DD; }
-            .bggreen  { background-color: #4F4; }
-
-            .legend   { font-size: 90%; }
-            .cplate   { font-size: 70%; border: solid grey 1px; }
-	}
-    </style>
-    <!--[if IE]>
-    <style>
-    body {
-       font-size: 13px;
-       margin: 10px 10px;
-    }
-    </style>
-    <![endif]-->    <script type="text/javascript"><!--
-    function addHeaderTags() {
-        var spans = document.getElementsByTagName("span");
-        for (var i=0; i < spans.length; i++) {
-            var elem = spans[i];
-            if (elem) {
-                var level = elem.getAttribute("class");
-                if (level == "h1" || level == "h2" || level == "h3" || level == "h4" || level == "h5" || level == "h6") {
-                    elem.innerHTML = "<"+level+">"+elem.innerHTML+"</"+level+">";
-                }
-            }
-        }
-    }
-    var legend_html = "Colour legend:<br />      <table>         <tr><td>Unknown:</td>                   <td><span class='cplate bgwhite'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Draft:</td>                     <td><span class='cplate bgred'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Informational:</td>             <td><span class='cplate bgorange'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Experimental:</td>              <td><span class='cplate bgyellow'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Best Common Practice:</td>      <td><span class='cplate bgmagenta'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Proposed Standard:</td>         <td><span class='cplate bgblue'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Draft Standard (old designation):</td> <td><span class='cplate bgcyan'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Internet Standard:</td>         <td><span class='cplate bggreen'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Historic:</td>                  <td><span class='cplate bggrey'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>         <tr><td>Obsolete:</td>                  <td><span class='cplate bgbrown'>&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>     </table>";
-    function showElem(id) {
-        var elem = document.getElementById(id);
-        elem.innerHTML = eval(id+"_html");
-        elem.style.visibility='visible';
-    }
-    function hideElem(id) {
-        var elem = document.getElementById(id);
-        elem.style.visibility='hidden';
-        elem.innerHTML = "";
-    }
-    // -->
-    </script></head>
+</style>
 <body>
-<span class="pre noprint docinfo">[<a href="index.html" title="Home">Home</a>]     </span>
-<pre><h3>Fast lane Wanderer </h3>
 
+  <div class="container">
+    <header class="blog-header py-3">
+      <div class="row flex-nowrap justify-content-between align-items-center">
+        <div class="col-4 pt-1">
+          <a class="text-muted" href="index.html">home</a>
 
+        </div>
+        <div class="col-4 text-center">
+          <a class="blog-header-logo text-dark" href="#">Wandering Snake</a>
+        </div>
+        <div class="col-4 d-flex justify-content-end align-items-center">
 
-    <span class="h1">Who is a Hacker?</span>
-    from   <a href="http://www.catb.org/~esr/faqs/hacker-howto.html">Eric S Reymond's blog </a>
+          <a class="btn btn-sm btn-outline-secondary" href="#">Subscribe</a>
+        </div>
+      </div>
+    </header>
+    <br>
+  </div>
 
-    Has technical knowledge, and enjoys problem solving and overcoming limits.
+  <main role="main" class="container">
+    <div class="row">
+      <div class="col-md-8 blog-main">
 
-    history: at the time of time sharing minicomputers, and ARPAnet experiments.
-             The term hacker originated from there.
-             Hackers built the Internet.
-             They made Unix.
-             They made  the World Wide Web.
+        <div class="blog-post">
+          <h2 class="blog-post-title">Who is a Hacker?</h2>
+<br> 
+from   <a href="http://www.catb.org/~esr/faqs/hacker-howto.html">Eric S Reymond's blog </a>
 
-    If you are part of this culture, and contributed to it, and other people in
-    it call you a hacker,
-        then you are a hacker.
+<p>Has technical knowledge, and enjoys problem solving and overcoming limits.</p>
 
-    Hacker mindset is not confined to software only. it's independent of the
-    medium. Hackers respect all hackers types.
+<p>history: at the time of time sharing minicomputers, and ARPAnet experiments.</p>
+<ul>
 
+  <li>The term hacker originated from there.</li>
+  <li>Hackers built the Internet.</li>
+  <li>They made Unix.</li>
+  <li>They made  the World Wide Web.</li>
+</ul>
+         
+         
+         
+         
+<p>If you are part of this culture, and contributed to it, and other people in
+  it call you a hacker,
+      then you are a hacker.</p>
+
+<p>Hacker mindset is not confined to software only. it's independent of the
+  medium. Hackers respect all hackers types.</p>
+<ul>
+  <li>
     Hackers are NOT those who break into computers. These are called crackers.
+  </li>
+  <li>Real hackers think crackers are lazy, irresponsible, and not very bright. </li>
+  <li>Being able to hotwire cars doesn't make you an automotive engineer. </li>
+  <li>Hackers build things, crackers break them. </li>
+</ul>
 
-    Real hackers think crackers are lazy, irresponsible, and not very bright.
+<h5> Hackers attitude:</h5>
+<p>
+<ul>
 
-    Being able to hotwire cars doesn't make you an automotive engineer.
+  <li>Hackers solve problems, and build things.</li>
+  <li>Hackers believe in freedom and voluntary mutual help.</li>
+  <li>Most effective way to become a master is to imitate the mind-set of
+    masters, intellectually and emotionally.</li>
+</ul>
 
-    Hackers build things, crackers break them.
+<p>To Follow the path:</p>
+<ul>
+<li> look to the master,</li>
+<li> follow the master,</li>
+<li> walk with the master,</li>
+<li> see through the master,</li>
+<li> become the master</li>
+-- Zen poem
+</ul>
 
+  
+  
+</p>
 
+<h5>Repeat the following until you believe them</h5>
 
-    Hackers attitude:
-    =================
+<ol type="1">
+<li> The world is full of fascinating problems waiting to be solved.</li>
 
-    - Hackers solve problems, and build things.
-    - Hackers believe in freedom and voluntary mutual help.
-    - Most effective way to become a master is to imitate the mind-set of
-      masters, intellectually and emotionally.
+<p> To be a hacker, you have to get a basic thrill from solving problems,
+  sharpening your skills, and exercising your intelligence.</p>
+<p> If you are not like this naturally, you will be distracted by things
+like sex, money and social approval. </p>
 
-    To Follow the path,
-      look to the master,
-        follow the master,
-          walk with the master,
-           see through the master,
-            become the master
-              -- Zen poem
-
-
-    Repeat the following until you believe them
-    ===========================================
-
-    1- The world is full of fascinating problems waiting to be solved.
-    ------------------------------------------------------------------
-       - To be a hacker, you have to get a basic thrill from solving problems,
-          sharpening your skills, and exercising your intelligence.
-
-       - if you are not like this naturally, you will be distracted by things
-        like sex, money and social approval.
-       - develop a faith in your learning ability, even though you know only one
-          piece, you can learn to tackle the next piece.
-
-    2- No problem should ever have to be solved twice :
-    -----------------------------------------------------------
-        - Thinking time of hackers is precious.
-        - Moral duty for you to share information. solve problems, and give
-        solution away for other hackers.
-        - That doesn't mean take existing solutions as sacred.
-        - you are not obligated to give all your creative products away,
-        but those who do earn hackers respect.
-        - you can sell enough to feed your family, as long as you don't forget
-        your loyalty to your fellow hackers.
-
-    3- Boredom and drudgery are evil:
-    ---------------------------------------
-        - hackers and creative people should never be bored, or
-        do stupid repetitive work.
-        - you should want to automate the boring bits as much as possible.
-        , not just for yourself, but also for everyone else.
-
-    4- Freedom is good:
-    ----------------------------
-        - Hackers are naturally anti-authoritarian.
-        - Authoritarian attitude has to be fought wherever you find it.
-        - But this is not the same as fighting all authority, children need
-        to be guided.
-        - Authoritarians thrive on censorship and secrecy. They distrust
-          voluntary cooperation and information sharing. they only like
-          cooperation that they control.
-
-    5- Attitude is no subtitute for competence:
-    -----------------------------------------------
-        - Becoming a hacker will take intelligence, practice, dedication,
-          and hardwork.
-        - If you value competence, you will enjoy developing it in yourself.
-         Hard work and dedication will become intense play rather than drudgery.
+<p> Develop a faith in your learning ability, even though you know only one
+  piece, you can learn to tackle the next piece.</p>
+<li>No problem should ever have to be solved twice :
+  <p>    - Thinking time of hackers is precious.
+    - Moral duty for you to share information. solve problems, and give
+    solution away for other hackers.
+    - That doesn't mean take existing solutions as sacred.
+    - you are not obligated to give all your creative products away,
+    but those who do earn hackers respect.
+    - you can sell enough to feed your family, as long as you don't forget
+    your loyalty to your fellow hackers.</p>
+</li>
 
 
-
-    * Basic Hacking Skills:
-    ======================
-
-    1- learn how to program:
-        - start with python if you don't know any.
-        - I used to suggest Java as a first language, but changed my mind,
-        a hacker cannot approach problem-solving like a plumber in a hardware
-        store, you have to know what the components actually do. better to learn
-         C or Lisp first.
-        - if you get serious, you have to learn C, the core of Unix.
-        - like learning to write good natural language, best way is to read some
-         stuff written by masters, write some things yourself, read a lot more,
-          write a little more,....
-
-    2- Get one of the open-source unixes and learn to use and run it:
-        - hackers culture is heavily unix centered, its open source, powers most
-        of servers and the Internet.
-
-    3- Learn how to use the web and write html.
-    4- If you don't have functional english, learn it.
-
-
-    * Getting status in hacker culture:
-    ====================================
-
-    5 ways to be respected by hackers:
-        1- write open source software
-            others find useful or fun.
-            hackers most revered icons are people who have written large
-            capable programs that met widespread need and given them away.
-
-        2- help test and debug open source software:
-            good beta-testers are worth their weight in rubies.
-        3- publish useful information:
-            collect and filter useful and interesting information into webpages,
-            and docs like FAQs.
-            make them generally available.
-
-        4- Help keep the infrastructure working:
-            hacker culture is run by volunteers.
-            lots of unglamorous work need to be done to keep going, administring
-             emails, newsgroups, archiving, ...etc
-
-        5- serve the hacker culture itself:
-            hacking culture doesn't have leaders. but it has heroes, and tribal
-            elders.
-            when you have been in the trenches long enough, you may grow into
-            one of these.
-            Hackers distrust blatant ego in their tribal elders. Dont reach for
-            that kind of fame. Be modest and gracious about your status.
-
-    * Points for style
-    ==================
-    things you can do when you are not at your computer.
-        1- Learn to write your native language well. even though its common
-        stereotype that programmers can't write.
-        2- Read science fiction.
-        3- Join a hackspace.
-        4- Train in martial arts form: it fosters mental discipline,
-            most popular form are Asian empty hand arts, Karate, Kungfu,TaeKwonDo,
-            most hackerly martial arts are those that emphasize mental
-            discipline, relaxed awareness, and precise control. rather than raw
-            strength, athleticism, or physical toughness.
-
-        5- Study an actual meditaion discipline. favourite is Zen.
-        6- Develop Analytical ear for music. learn to play some muisical instrument well.
-        7- Develop appreciation for puns and word play.
-
-    No boundary between work and play.
-    Hackers don't do things by halves, if they invest in a skill, they tend to
-    be very good at it.
-
-    things not to do:
-        1- dont use silly, grandiose user ID or screen name. hackers are proud
-         of what they do and want it associated with their real names.
-        2- don't gent in flame wars on Usenet.
-        3- Don't call yourself cyberpunk, or waste your time on anybody who does.
-        4- Don't post or email writing full of spelling errors and bad grammer.
+<li>
+  Boredom and drudgery are evil:
+</li>
+<p>    - hackers and creative people should never be bored, or
+  do stupid repetitive work.
+  - you should want to automate the boring bits as much as possible.
+  , not just for yourself, but also for everyone else.</p>
+<li>
+  Freedom is good:
+</li>
+- Hackers are naturally anti-authoritarian.
+- Authoritarian attitude has to be fought wherever you find it.
+- But this is not the same as fighting all authority, children need
+to be guided.
+- Authoritarians thrive on censorship and secrecy. They distrust
+  voluntary cooperation and information sharing. they only like
+  cooperation that they control.
+<li>
+  Attitude is no subtitute for competence:
+</li>
+- Becoming a hacker will take intelligence, practice, dedication,
+and hardwork.
+- If you value competence, you will enjoy developing it in yourself.
+Hard work and dedication will become intense play rather than drudgery.
 
 
+</ol>
+ 
+
+* Basic Hacking Skills:
+======================
+
+1- learn how to program:
+    - start with python if you don't know any.
+    - I used to suggest Java as a first language, but changed my mind,
+    a hacker cannot approach problem-solving like a plumber in a hardware
+    store, you have to know what the components actually do. better to learn
+     C or Lisp first.
+    - if you get serious, you have to learn C, the core of Unix.
+    - like learning to write good natural language, best way is to read some
+     stuff written by masters, write some things yourself, read a lot more,
+      write a little more,....
+
+2- Get one of the open-source unixes and learn to use and run it:
+    - hackers culture is heavily unix centered, its open source, powers most
+    of servers and the Internet.
+
+3- Learn how to use the web and write html.
+4- If you don't have functional english, learn it.
 
 
-<br>
+* Getting status in hacker culture:
+====================================
 
+5 ways to be respected by hackers:
+    1- write open source software
+        others find useful or fun.
+        hackers most revered icons are people who have written large
+        capable programs that met widespread need and given them away.
+
+    2- help test and debug open source software:
+        good beta-testers are worth their weight in rubies.
+    3- publish useful information:
+        collect and filter useful and interesting information into webpages,
+        and docs like FAQs.
+        make them generally available.
+
+    4- Help keep the infrastructure working:
+        hacker culture is run by volunteers.
+        lots of unglamorous work need to be done to keep going, administring
+         emails, newsgroups, archiving, ...etc
+
+    5- serve the hacker culture itself:
+        hacking culture doesn't have leaders. but it has heroes, and tribal
+        elders.
+        when you have been in the trenches long enough, you may grow into
+        one of these.
+        Hackers distrust blatant ego in their tribal elders. Dont reach for
+        that kind of fame. Be modest and gracious about your status.
+
+* Points for style
+==================
+things you can do when you are not at your computer.
+    1- Learn to write your native language well. even though its common
+    stereotype that programmers can't write.
+    2- Read science fiction.
+    3- Join a hackspace.
+    4- Train in martial arts form: it fosters mental discipline,
+        most popular form are Asian empty hand arts, Karate, Kungfu,TaeKwonDo,
+        most hackerly martial arts are those that emphasize mental
+        discipline, relaxed awareness, and precise control. rather than raw
+        strength, athleticism, or physical toughness.
+
+    5- Study an actual meditaion discipline. favourite is Zen.
+    6- Develop Analytical ear for music. learn to play some muisical instrument well.
+    7- Develop appreciation for puns and word play.
+
+No boundary between work and play.
+Hackers don't do things by halves, if they invest in a skill, they tend to
+be very good at it.
+
+things not to do:
+    1- dont use silly, grandiose user ID or screen name. hackers are proud
+     of what they do and want it associated with their real names.
+    2- don't gent in flame wars on Usenet.
+    3- Don't call yourself cyberpunk, or waste your time on anybody who does.
+    4- Don't post or email writing full of spelling errors and bad grammer.
+	
+
+        </div><!-- /.blog-post -->
+
+
+      </div><!-- /.blog-main -->
+
+      <aside class="col-md-4 blog-sidebar">
+        <div class="p-3 mb-3 bg-light rounded">
+          <h4 class="font-italic">About</h4>
+          <p class="mb-0"> A blog about random wandering about different topics. Mostly technology</p>
+        </div>
+
+
+      </aside><!-- /.blog-sidebar -->
+
+    </div><!-- /.row -->
+
+  </main><!-- /.container -->
+
+
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+  <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
+  <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
+  <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/holder.min.js"></script>
 </body>
+
 </html>
